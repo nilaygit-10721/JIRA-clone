@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongodb = require('./config/database');
+const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/project');
 const issueRoutes = require('./routes/issue');
@@ -10,6 +11,11 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+
+app.use(cors({
+    origin: 'http://localhost:5173', // Allow requests from this origin
+    credentials: true, // Allow cookies and credentials
+  }));
 
 // Routes
 app.use('/api/auth', authRoutes);

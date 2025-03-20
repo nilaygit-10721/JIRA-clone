@@ -1,25 +1,24 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Login from "./pages/Login";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./index.css";
 import Signup from "./pages/Signup";
-import Projects from "./pages/Projects";
+import Login from "./pages/Login";
 import Home from "./pages/Home";
 
-const App: React.FC = () => {
+function App() {
   return (
-    <Router>
-      <Navbar />
-      <div className="container mt-4">
+    <>
+      <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/projects" element={<Projects />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Login />} /> {/* Default route */}
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </>
   );
-};
+}
 
 export default App;
